@@ -87,7 +87,7 @@ int main(){
 
     printf("- Que a batalha comece!\n");
     printf("\n");
-
+ 
     //enquanto atacante tem tiros restantes e menos que 3 acertos
     while(atacante.qtdTiros>0 && defensor.acertos<3){
         do{
