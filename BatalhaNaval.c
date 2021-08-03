@@ -8,8 +8,8 @@
 
 struct Defensor
 {
-    char Nome[CHARMAX]; //nome do desenfor, input do usuario.
-    int Gabarito[LINMAX][COLMAX]; //tabuleiro com as posicoes dos barcos escolhidas pelo defesor, input do usuario. 
+    char Nome[CHARMAX]; //nome do defensor, input do usuario.
+    int Gabarito[LINMAX][COLMAX]; //tabuleiro com as posicoes dos barcos escolhidas pelo defensor, input do usuario. 
     int acertos; //variavel guarda numero de acertos feitos pelo atacante.
     int tamStr; //variavel guarda tamanho da string que contem o nome do defensor.
 };
@@ -143,9 +143,9 @@ int main(){
     }
 
     if(defensor.acertos==3){
-        printf("- %s ganhou!\n", atacante.Nome);
+        printf("- %s ganhou!\n", atacante.Nome);//se saiu do laco pq atacante acertou as tres posicoes
     }else{
-        printf("- %s ganhou!\n", defensor.Nome);
+        printf("- %s ganhou!\n", defensor.Nome);//se saiu do laco pq acabaram as tentativas do atacante
     }
     printf("\n");
 
