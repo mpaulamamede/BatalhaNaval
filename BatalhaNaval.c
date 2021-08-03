@@ -2,24 +2,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define LINMAX 8
-#define COLMAX 8
-#define CHARMAX 20
+#define LINMAX 8 //qtd de linhas no tabuleiro. 
+#define COLMAX 8 //qtd de colunas no tabuleiro.
+#define CHARMAX 20 //qtd maxima de caracteres para nomes do defensor e atacante.
 
 struct Defensor
 {
-    char Nome[CHARMAX];
-    int Gabarito[LINMAX][COLMAX];
-    int acertos;
-    int tamStr;
+    char Nome[CHARMAX]; //nome do desenfor, input do usuario.
+    int Gabarito[LINMAX][COLMAX]; //tabuleiro com as posicoes dos barcos escolhidas pelo defesor, input do usuario. 
+    int acertos; //variavel guarda numero de acertos feitos pelo atacante.
+    int tamStr; //variavel guarda tamanho da string que contem o nome do defensor.
 };
 
 struct Atacante
 {
-    char Nome[CHARMAX];
-    int Tiros[LINMAX][COLMAX];
-    int qtdTiros;
-    int tamStr;
+    char Nome[CHARMAX]; //nome do atacante, input do usuario.
+    int Tiros[LINMAX][COLMAX]; //tabuleiro com as posicoes das tentativas do usuario, ver legenda.
+    int qtdTiros; //variavel guarda a qtd de tentativas restantes para o atacante.
+    int tamStr; //variavel guarda tamanho da string que contem nome do atacante.
 };
 
 int main(){
@@ -39,6 +39,7 @@ int main(){
     fflush(stdin);
     fgets(atacante.Nome, CHARMAX, stdin);
 
+    //retirar enter final das strings com os nomes do defensor e atacante
     defensor.tamStr = strlen(defensor.Nome);
     atacante.tamStr = strlen(atacante.Nome);
 
@@ -55,7 +56,7 @@ int main(){
     printf("TABULEIRO\n");
     for(i=0; i<LINMAX; i++){
         for(j=0; j<COLMAX; j++){
-            printf("%d ", defensor.Gabarito[i][j]); 
+            printf("%d ", defensor.Gabarito[i][j]); //exibir tabuleiro inicial zerado.
         }
 
         printf("\n");
@@ -65,6 +66,7 @@ int main(){
     printf("9 - Navio afundado\n5 - Tiro na agua\n");
     printf("\n");
 
+    //pergunta as posicoes dos tres barcos pro defensor e guarda no vetor gabarito.
     for(i=0; i<3; i++){
         do{
         printf("- %s, digite as coordenadas x e y do barco numero %d (entre 0 e 7): ", defensor.Nome, i+1);
@@ -74,6 +76,7 @@ int main(){
     }
     printf("\n");
 
+    //teste tabuleiro com gabarito.
     /*for(i=0; i<LINMAX; i++){
         for(j=0; j<COLMAX; j++){
             printf("%d ", defensor.Gabarito[i][j]); 
@@ -85,6 +88,7 @@ int main(){
     printf("- Que a batalha comece!\n");
     printf("\n");
 
+    //enquanto atacante tem tiros restantes e menos que 3 acertos
     while(atacante.qtdTiros>0 && defensor.acertos<3){
         do{
             printf("- %s, digite as coordenadas x e y de ataque (entre 0 e 7):", atacante.Nome);
